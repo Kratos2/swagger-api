@@ -29,6 +29,7 @@ public class SwaggerPublish {
 //        swagger.setBasePath("http://192.168.9.46:5666/swagger-ui.html");
         List<Tag> tag = swagger.getTags();
         swagger.setName(tag.get(0).getName());
+        swagger.setBasePath("/v2/api-docs");
         Swagger original = swaggerDocRepo.findByBasePath(swagger.getBasePath());
         // MongoDB docs cannot contain "$" when update, so we must delete old one and save the new one.
         if(original != null && original.getId().trim()!= "" && original.getId() != null ){

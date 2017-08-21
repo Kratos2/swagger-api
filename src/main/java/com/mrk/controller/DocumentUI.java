@@ -31,7 +31,7 @@ public class DocumentUI {
         return swaggers;
     }
 
-    @RequestMapping(path = "/{basePath}", method = RequestMethod.GET)
+    @RequestMapping(path = "/basePath", method = RequestMethod.GET)
     public Swagger getByBasePath(@PathVariable  String basePath){
         if(!basePath.startsWith("/")){
             basePath = "/" + basePath;
