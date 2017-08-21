@@ -29,7 +29,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="https://github.com/Kratos2" style="color: #e7f6ec">About</a>
+                    <a href="https://github.com/Kratos2/swagger-api" style="color: #e7f6ec">About</a>
                 </li>
             </ul>
         </div>
@@ -50,11 +50,11 @@
         <div id="api-list">
             <ul class="list-group">
                 <li v-for="api in apis" class="list-group-item">
-                    <a v-bind:href="'swagger/index.html?url=/api' + api.basePath" >
-                    <!--<a v-bind:href="'swagger/index.html?url=' + api.basePath" >-->
+                    <!--<a v-href="swagger/index.html?url={{encodeURIComponent('/api' + api.basePath)}}"></a>-->
+                    <a @click="openApi(api.host)">
                     <!--<a v-bind:href="api.basePath" >-->
                         <SPAN STYLE="color: #1f811f">API Name</SPAN>:
-                        {{ api.name }}
+                        <span style="cursor:pointer">{{ api.name }}</span>
                     </a>
                 </li>
 

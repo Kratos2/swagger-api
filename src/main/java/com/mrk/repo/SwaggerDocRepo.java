@@ -14,4 +14,10 @@ import org.springframework.stereotype.Repository;
 public interface SwaggerDocRepo extends CrudRepository<Swagger, String> {
 
     Swagger findByBasePath(String basePath);
+
+    Swagger findByName(String name);
+
+    Swagger findByHost(String host);
+
+    Swagger findById(String id);
 }

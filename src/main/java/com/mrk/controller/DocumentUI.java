@@ -32,11 +32,9 @@ public class DocumentUI {
     }
 
     @RequestMapping(path = "/basePath", method = RequestMethod.GET)
-    public Swagger getByBasePath(@PathVariable  String basePath){
-        if(!basePath.startsWith("/")){
-            basePath = "/" + basePath;
-        }
-        Swagger swagger = swaggerDocRepo.findByBasePath(basePath);
+    public Swagger getByBasePath(String host){
+        // 根据basePath 获取swagger数据
+        Swagger swagger = swaggerDocRepo.findByHost(host);
         return swagger;
     }
 

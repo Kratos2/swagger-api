@@ -25,13 +25,11 @@ public class SwaggerPublish {
 
     @RequestMapping(path = "/publish", method = RequestMethod.POST, consumes = "application/json;charset=utf-8" )
     public void publish(@RequestBody Swagger swagger){
-//        swagger.setHost("192.168.9.46:5666");
-//        swagger.setBasePath("http://192.168.9.46:5666/swagger-ui.html");
+//      swagger.setHost("192.168.9.46:5666");
         List<Tag> tag = swagger.getTags();
         swagger.setName(tag.get(0).getName());
-        swagger.setBasePath("/v2/api-docs");
-        Swagger original = swaggerDocRepo.findByBasePath(swagger.getBasePath());
-        // MongoDB docs cannot contain "$" when update, so we must delete old one and save the new one.
+//        swagger.setBasePath(swagger.getName()+"/v2/api-docs");
+        Swagger original = swaggerDocRepo.findByHost(swagger.getHost());
         if(original != null && original.getId().trim()!= "" && original.getId() != null ){
             swaggerDocRepo.delete(original.getId());
         }
